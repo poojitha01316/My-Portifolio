@@ -1,0 +1,109 @@
+.projects-section {
+  position: relative;
+  z-index: 10;
+}
+
+.projects-header {
+  margin-bottom: 60px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-icon-wrapper {
+  color: var(--color-accent-secondary);
+  margin-bottom: 20px;
+  background: rgba(14, 165, 233, 0.1);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover .project-icon-wrapper {
+  background: var(--color-accent-secondary);
+  color: #fff;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+}
+
+.project-title {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.project-description {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 24px;
+}
+
+.project-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.project-tech-stack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-tech {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: var(--color-text-main);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-tech {
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-glass);
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background: var(--color-accent);
+  box-shadow: 0 4px 15px var(--color-accent-glow);
+  transform: translateY(-2px);
+}

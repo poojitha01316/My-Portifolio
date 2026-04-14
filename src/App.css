@@ -1,0 +1,28 @@
+.App {
+  width: 100%;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body {
+  cursor: none;
+}
+
+/* We need default cursors on mobile */
+@media (max-width: 768px) {
+  .App, body {
+    cursor: auto;
+  }
+}
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-text);
+  transform-origin: 0%;
+  z-index: 10000;
+  box-shadow: 0 0 10px var(--color-accent-glow);
+}

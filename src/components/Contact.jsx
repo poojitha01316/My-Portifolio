@@ -1,9 +1,18 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Globe, User, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Globe, User, Phone, CheckCircle } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
+  const [showToast, setShowToast] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+    e.target.reset();
+  };
+
   return (
     <section className="contact-section" id="contact">
       <div className="container">
@@ -72,7 +81,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            onSubmit={(e) => { e.preventDefault(); alert("Thanks for your message! This is a UI demo."); }}
+            onSubmit={handleSubmit}
           >
             <div className="form-group">
               <label>Name</label>
@@ -96,6 +105,21 @@ const Contact = () => {
       <footer className="footer">
         <p>&copy; {new Date().getFullYear()} Nallabelli Pujitha. All Rights Reserved.</p>
       </footer>
+
+      <AnimatePresence>
+        {showToast && (
+          <motion.div 
+            className="toast-notification"
+            initial={{ opacity: 0, y: 50, scale: 0.3 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+            transition={{ type: "spring", bounce: 0.5 }}
+          >
+            <CheckCircle size={20} color="#0ea5e9" />
+            <span>Message sent successfully!</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

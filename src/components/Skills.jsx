@@ -7,7 +7,7 @@ const Skills = () => {
     { category: 'Programming', items: ['Java', 'HTML', 'CSS', 'Python', 'SQL'] },
     { category: 'Technologies', items: ['ServiceNow (CSA & CAD)', 'Pega (Beginner)', 'React', 'Git', 'VS Code'] },
     { category: 'Concepts', items: ['AI & ML', 'OOPS', 'DBMS', 'Workflow Automation'] },
-    { category: 'Data Analytics', items: ['Microsoft Excel', 'Power BI', 'Data Preprocessing'] },
+
   ];
 
   return (
@@ -28,28 +28,30 @@ const Skills = () => {
 
         <div className="skills-container">
           {customSkills.map((skillGroup, index) => (
-            <motion.div 
-              key={index}
-              className="skill-group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
+            <div key={index} className="skill-group">
               <h3 className="skill-category">{skillGroup.category}</h3>
-              <div className="skill-badges">
-                {skillGroup.items.map((item, id) => (
-                  <motion.span 
-                    key={id}
-                    className="skill-badge"
-                    whileHover={{ scale: 1.1, backgroundColor: 'var(--color-accent)' }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {item}
-                  </motion.span>
-                ))}
+              <div className="marquee-wrapper">
+                <motion.div 
+                  className="marquee-track"
+                  animate={{ x: index % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"] }}
+                  transition={{ 
+                    duration: 30, 
+                    ease: "linear", 
+                    repeat: Infinity 
+                  }}
+                >
+                  {/* We duplicate the items array so the marquee loops seamlessly! */}
+                  {[...skillGroup.items, ...skillGroup.items, ...skillGroup.items].map((item, id) => (
+                    <span 
+                      key={id}
+                      className="skill-badge hover-target"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
